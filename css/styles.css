@@ -193,3 +193,42 @@ body {
         width: 100%;
     }
 }
+.expense-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.expense-item h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.expense-item p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.expense-item strong {
+    white-space: nowrap;
+}
+
+.empty-state {
+    margin: 0;
+    padding: 24px;
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    color: #9ca3af;
+}

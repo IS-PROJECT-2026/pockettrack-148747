@@ -1,8 +1,29 @@
 'use strict';
 
 const expenseForm = document.querySelector('#expense-form');
+const expenseList = document.querySelector('#expense-list');
 
 const expenses = [];
+
+function renderExpenses() {
+    if (expenses.length === 0) {
+        expenseList.innerHTML = `
+            <p class="empty-state">No expenses recorded yet.</p>
+        `;
+        return;
+    }
+
+    expenseList.innerHTML = expenses.map((expense) => `
+        <article class="expense-item">
+            <div>
+                <h3>${expense.description}</h3>
+                <p>${expense.category} · ${expense.date}</p>
+            </div>
+
+            <strong>KES ${expense.amount.toLocaleString()}</strong>
+        </article>
+    `).join('');
+}
 
 expenseForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -22,8 +43,9 @@ expenseForm.addEventListener('submit', (event) => {
 
     expenses.push(expense);
 
-    console.log('Expense added:', expense);
-    console.log('All expenses:', expenses);
+    renderExpenses();
 
     expenseForm.reset();
 });
+
+renderExpenses();
