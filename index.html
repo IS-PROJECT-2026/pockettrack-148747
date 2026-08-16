@@ -4,17 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>PocketTrack</title>
-
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <main id="app">
-        <h1>PocketTrack</h1>
-        <p>Personal expense tracking made simple.</p>
-    </main>
+    <div class="app-shell">
+        <header class="app-header">
+            <div>
+                <p class="eyebrow">Personal Finance</p>
+                <h1>PocketTrack</h1>
+                <p class="subtitle">Track your everyday spending in one place.</p>
+            </div>
+
+            <div class="total-card">
+                <span>Total Spending</span>
+                <strong>KES 0</strong>
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <section class="panel expense-form-panel">
+                <div class="section-heading">
+                    <h2>Add Expense</h2>
+                    <p>Record a new expense.</p>
+                </div>
+
+                <div class="placeholder-block">
+                    Expense form will be added here.
+                </div>
+            </section>
+
+            <section class="panel overview-panel">
+                <div class="section-heading">
+                    <h2>Spending Overview</h2>
+                    <p>Your spending summary will appear here.</p>
+                </div>
+
+                <div class="placeholder-block">
+                    Spending statistics will be added here.
+                </div>
+            </section>
+
+            <section class="panel history-panel">
+                <div class="section-heading">
+                    <h2>Recent Expenses</h2>
+                    <p>Your recorded expenses will appear here.</p>
+                </div>
+
+                <div class="placeholder-block">
+                    No expenses recorded yet.
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="js/app.js"></script>
 </body>
