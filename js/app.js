@@ -4,6 +4,7 @@ const expenseForm = document.querySelector('#expense-form');
 const expenseList = document.querySelector('#expense-list');
 const categoryFilter = document.querySelector('#category-filter');
 const totalSpending = document.querySelector('#total-spending');
+const formError = document.querySelector('#form-error');
 
 let expenses = JSON.parse(localStorage.getItem('pockettrack-expenses')) || [];
 
@@ -62,6 +63,28 @@ expenseForm.addEventListener('submit', (event) => {
     const amount = Number(document.querySelector('#amount').value);
     const category = document.querySelector('#category').value;
     const date = document.querySelector('#date').value;
+
+    formError.textContent = '';
+
+    if (!description) {
+        formError.textContent = 'Please enter an expense description.';
+        return;
+    }
+
+    if (!amount || amount <= 0) {
+        formError.textContent = 'Please enter a valid expense amount.';
+        return;
+    }
+
+    if (!category) {
+        formError.textContent = 'Please select an expense category.';
+        return;
+    }
+
+    if (!date) {
+        formError.textContent = 'Please select an expense date.';
+        return;
+    }
 
     const expense = {
         id: Date.now(),
