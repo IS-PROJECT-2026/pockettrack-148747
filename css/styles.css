@@ -102,14 +102,7 @@ select {
     color: #6b7280;
 }
 
-.placeholder-block {
-    margin-top: 24px;
-    padding: 32px;
-    border: 2px dashed #9ca3af;
-    border-radius: 14px;
-    color: #6b7280;
-    text-align: center;
-}
+
 
 .expense-form {
     display: grid;
