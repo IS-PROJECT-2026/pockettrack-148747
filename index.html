@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PocketTrack</title>
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -13,63 +15,109 @@
         <header class="app-header">
             <div>
                 <p class="eyebrow">Personal Finance</p>
+
                 <h1>PocketTrack</h1>
-                <p class="subtitle">Track your everyday spending in one place.</p>
+
+                <p class="subtitle">
+                    Track your everyday spending in one place.
+                </p>
             </div>
 
             <div class="total-card">
                 <span>Total Spending</span>
-                <strong id="total-spending">KES 0</strong>
+
+                <strong id="total-spending">
+                    KES 0
+                </strong>
             </div>
         </header>
 
         <main class="dashboard">
-        <section class="panel expense-form-panel">
-            <div class="section-heading">
-                <h2>Add Expense</h2>
-                <p>Record a new expense.</p>
-            </div>
-        
-            <form id="expense-form" class="expense-form">
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description" placeholder="e.g. Lunch">
-                </div>
-        
-                <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" id="amount" name="amount" placeholder="e.g. 1200" min="0" step="0.01">
-                </div>
-        
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category">
-                        <option value="">Select a category</option>
-                        <option value="food">Food</option>
-                        <option value="transport">Transport</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="bills">Bills</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-        
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" name="date">
-                </div>
-                <p id="form-error" class="form-error" aria-live="polite"></p>
-        
-                <button type="submit" class="primary-button">
-                    Add Expense
-                </button>
-            </form>
-        </section>
+            <section class="panel expense-form-panel">
+                <div class="section-heading">
+                    <h2>Add Expense</h2>
 
-            <section class="panel overview-panis thisel">
+                    <p>Record a new expense.</p>
+                </div>
+
+                <form id="expense-form" class="expense-form">
+                    <div class="form-group">
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <input type="text" id="description" name="description" placeholder="e.g. Lunch"
+                            autocomplete="off" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">
+                            Amount
+                        </label>
+
+                        <input type="number" id="amount" name="amount" placeholder="e.g. 1200" min="0.01" step="0.01"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">
+                            Category
+                        </label>
+
+                        <select id="category" name="category" required>
+                            <option value="">
+                                Select a category
+                            </option>
+
+                            <option value="food">
+                                Food
+                            </option>
+
+                            <option value="transport">
+                                Transport
+                            </option>
+
+                            <option value="shopping">
+                                Shopping
+                            </option>
+
+                            <option value="bills">
+                                Bills
+                            </option>
+
+                            <option value="entertainment">
+                                Entertainment
+                            </option>
+
+                            <option value="other">
+                                Other
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">
+                            Date
+                        </label>
+
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <p id="form-error" class="form-error" aria-live="polite"></p>
+
+                    <button type="submit" class="primary-button">
+                        Add Expense
+                    </button>
+                </form>
+            </section>
+
+            <section class="panel overview-panel">
                 <div class="section-heading">
                     <h2>Spending Overview</h2>
-                    <p>Your spending summary will appear here.</p>
+
+                    <p>
+                        Your spending summary will appear here.
+                    </p>
                 </div>
 
                 <div class="placeholder-block">
@@ -80,24 +128,52 @@
             <section class="panel history-panel">
                 <div class="section-heading">
                     <h2>Recent Expenses</h2>
-                    <p>Your recorded expenses will appear here.</p>
+
+                    <p>
+                        Your recorded expenses will appear here.
+                    </p>
                 </div>
+
                 <div class="history-toolbar">
-                    <label for="category-filter">Filter by category</label>
-                
+                    <label for="category-filter">
+                        Filter by category
+                    </label>
+
                     <select id="category-filter">
-                        <option value="all">All categories</option>
-                        <option value="food">Food</option>
-                        <option value="transport">Transport</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="bills">Bills</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="other">Other</option>
+                        <option value="all">
+                            All categories
+                        </option>
+
+                        <option value="food">
+                            Food
+                        </option>
+
+                        <option value="transport">
+                            Transport
+                        </option>
+
+                        <option value="shopping">
+                            Shopping
+                        </option>
+
+                        <option value="bills">
+                            Bills
+                        </option>
+
+                        <option value="entertainment">
+                            Entertainment
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
                     </select>
                 </div>
 
                 <div id="expense-list" class="expense-list">
-                    <p class="empty-state">No expenses recorded yet.</p>
+                    <p class="empty-state">
+                        No expenses recorded yet.
+                    </p>
                 </div>
             </section>
         </main>
