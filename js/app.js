@@ -3,7 +3,7 @@
 const expenseForm = document.querySelector('#expense-form');
 const expenseList = document.querySelector('#expense-list');
 
-const expenses = JSON.parse(localStorage.getItem('pockettrack-expenses')) || [];
+let expenses = JSON.parse(localStorage.getItem('pockettrack-expenses')) || [];
 
 function saveExpenses() {
     localStorage.setItem('pockettrack-expenses', JSON.stringify(expenses));
@@ -24,7 +24,17 @@ function renderExpenses() {
                 <p>${expense.category} · ${expense.date}</p>
             </div>
 
-            <strong>KES ${expense.amount.toLocaleString()}</strong>
+            <div class="expense-actions">
+                <strong>KES ${expense.amount.toLocaleString()}</strong>
+
+                <button
+                    type="button"
+                    class="delete-button"
+                    data-id="${expense.id}"
+                >
+                    Delete
+                </button>
+            </div>
         </article>
     `).join('');
 }
@@ -51,6 +61,18 @@ expenseForm.addEventListener('submit', (event) => {
     renderExpenses();
 
     expenseForm.reset();
+});
+expenseList.addEventListener('click', (event) => {
+    if (!event.target.matches('.delete-button')) {
+        return;
+    }
+
+    const expenseId = Number(event.target.dataset.id);
+
+    expenses = expenses.filter((expense) => expense.id !== expenseId);
+
+    saveExpenses();
+    renderExpenses();
 });
 
 renderExpenses();
