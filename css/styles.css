@@ -252,3 +252,30 @@ body {
 .delete-button:hover {
     background: #f3f4f6;
 }
+.history-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.history-toolbar label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.history-toolbar select {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    font: inherit;
+}
+
+@media (max-width: 600px) {
+    .history-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}

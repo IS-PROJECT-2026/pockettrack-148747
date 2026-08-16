@@ -2,6 +2,7 @@
 
 const expenseForm = document.querySelector('#expense-form');
 const expenseList = document.querySelector('#expense-list');
+const categoryFilter = document.querySelector('#category-filter');
 
 let expenses = JSON.parse(localStorage.getItem('pockettrack-expenses')) || [];
 
@@ -10,14 +11,20 @@ function saveExpenses() {
 }
 
 function renderExpenses() {
-    if (expenses.length === 0) {
+    const selectedCategory = categoryFilter.value;
+
+    const filteredExpenses = selectedCategory === 'all'
+        ? expenses
+        : expenses.filter((expense) => expense.category === selectedCategory);
+
+    if (filteredExpenses.length === 0) {
         expenseList.innerHTML = `
-            <p class="empty-state">No expenses recorded yet.</p>
+            <p class="empty-state">No expenses found.</p>
         `;
         return;
     }
 
-    expenseList.innerHTML = expenses.map((expense) => `
+    expenseList.innerHTML = filteredExpenses.map((expense) => `
         <article class="expense-item">
             <div>
                 <h3>${expense.description}</h3>
@@ -74,5 +81,6 @@ expenseList.addEventListener('click', (event) => {
     saveExpenses();
     renderExpenses();
 });
+categoryFilter.addEventListener('change', renderExpenses);
 
 renderExpenses();
