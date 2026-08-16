@@ -3,7 +3,11 @@
 const expenseForm = document.querySelector('#expense-form');
 const expenseList = document.querySelector('#expense-list');
 
-const expenses = [];
+const expenses = JSON.parse(localStorage.getItem('pockettrack-expenses')) || [];
+
+function saveExpenses() {
+    localStorage.setItem('pockettrack-expenses', JSON.stringify(expenses));
+}
 
 function renderExpenses() {
     if (expenses.length === 0) {
@@ -42,6 +46,7 @@ expenseForm.addEventListener('submit', (event) => {
     };
 
     expenses.push(expense);
+    saveExpenses();
 
     renderExpenses();
 
