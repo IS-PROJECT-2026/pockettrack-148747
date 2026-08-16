@@ -3,11 +3,20 @@
 const expenseForm = document.querySelector('#expense-form');
 const expenseList = document.querySelector('#expense-list');
 const categoryFilter = document.querySelector('#category-filter');
+const totalSpending = document.querySelector('#total-spending');
 
 let expenses = JSON.parse(localStorage.getItem('pockettrack-expenses')) || [];
 
 function saveExpenses() {
     localStorage.setItem('pockettrack-expenses', JSON.stringify(expenses));
+}
+
+function updateTotalSpending() {
+    const total = expenses.reduce((sum, expense) => {
+        return sum + expense.amount;
+    }, 0);
+
+    totalSpending.textContent = `KES ${total.toLocaleString()}`;
 }
 
 function renderExpenses() {
@@ -63,12 +72,14 @@ expenseForm.addEventListener('submit', (event) => {
     };
 
     expenses.push(expense);
-    saveExpenses();
 
+    saveExpenses();
     renderExpenses();
+    updateTotalSpending();
 
     expenseForm.reset();
 });
+
 expenseList.addEventListener('click', (event) => {
     if (!event.target.matches('.delete-button')) {
         return;
@@ -80,7 +91,10 @@ expenseList.addEventListener('click', (event) => {
 
     saveExpenses();
     renderExpenses();
+    updateTotalSpending();
 });
+
 categoryFilter.addEventListener('change', renderExpenses);
 
 renderExpenses();
+updateTotalSpending();
